@@ -204,11 +204,11 @@ public class Server {
               if (pair.length > 1) {
                 value = URLDecoder.decode(pair[1], StandardCharsets.UTF_8);
               }
-              List<String> values = query.get(key);
-              if (values == null) {
-                values = new ArrayList<String>();
-                query.put(key, values);
-              }
+              List<String> values = Optional.ofNullable(query.get(key))
+                              .orElse(query.put(key,new ArrayList<>()));
+
+
+
               values.add(value);
             }
         }
