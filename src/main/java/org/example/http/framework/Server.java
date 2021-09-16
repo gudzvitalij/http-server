@@ -199,10 +199,10 @@ public class Server {
             String params = urlParts[1];
             for (String param: params.split("&")) {
               String pair[] = param.split("=");
-              String key = URLDecoder.decode(pair[1], "UTF-8");
+              String key = URLDecoder.decode(pair[1], StandardCharsets.UTF_8);
               String value = "";
               if (pair.length > 1) {
-                value = URLDecoder.decode(pair[1], "UTF-8");
+                value = URLDecoder.decode(pair[1], StandardCharsets.UTF_8);
               }
               List<String> values = query.get(key);
               if (values == null) {
